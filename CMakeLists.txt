@@ -179,7 +179,6 @@ endif()
 if(TARGET_OS STREQUAL "android")
   set(DISCORD OFF)
   set(STEAM OFF)
-  set(VIDEORECORDER OFF)
 endif()
 
 if(TARGET_OS STREQUAL "emscripten")
@@ -1154,13 +1153,6 @@ set(EXPECTED_DATA
   assets/entities/license.txt
   assets/game/game_06.png
   audio/foley_body_impact-01.wv
-  audio/combo1.wv
-  audio/combo2.wv
-  audio/combo3.wv
-  audio/combo4.wv
-  audio/combo5.wv
-  audio/combo6.wv
-  audio/combo7.wv
   audio/foley_body_impact-02.wv
   audio/foley_body_impact-03.wv
   audio/foley_body_splat-01.wv
@@ -1191,71 +1183,6 @@ set(EXPECTED_DATA
   audio/hook_noattach-02.wv
   audio/hook_noattach-03.wv
   audio/music_menu.wv
-  audio/osu_lazer_menu/back-button-click.wv
-  audio/osu_lazer_menu/back-button-hover.wv
-  audio/osu_lazer_menu/check-off.wv
-  audio/osu_lazer_menu/check-on.wv
-  audio/osu_lazer_menu/click-close.wv
-  audio/osu_lazer_menu/click-short-confirm.wv
-  audio/osu_lazer_menu/click-short.wv
-  audio/osu_lazer_menu/drum-hitclap.wv
-  audio/osu_lazer_menu/drum-hitfinish.wv
-  audio/osu_lazer_menu/drum-hitnormal.wv
-  audio/osu_lazer_menu/drum-hitwhistle.wv
-  audio/osu_lazer_menu/drum-sliderslide.wv
-  audio/osu_lazer_menu/drum-slidertick.wv
-  audio/osu_lazer_menu/drum-sliderwhistle.wv
-  audio/osu_lazer_menu/menu-back-click.wv
-  audio/osu_lazer_menu/menu-back-hover.wv
-  audio/osu_lazer_menu/menu-charts-click.wv
-  audio/osu_lazer_menu/menu-charts-hover.wv
-  audio/osu_lazer_menu/menu-direct-click.wv
-  audio/osu_lazer_menu/menu-direct-hover.wv
-  audio/osu_lazer_menu/menu-edit-click.wv
-  audio/osu_lazer_menu/menu-edit-hover.wv
-  audio/osu_lazer_menu/menu-exit-click.wv
-  audio/osu_lazer_menu/menu-exit-hover.wv
-  audio/osu_lazer_menu/menu-freeplay-click.wv
-  audio/osu_lazer_menu/menu-freeplay-hover.wv
-  audio/osu_lazer_menu/menu-multiplayer-click.wv
-  audio/osu_lazer_menu/menu-multiplayer-hover.wv
-  audio/osu_lazer_menu/menu-options-click.wv
-  audio/osu_lazer_menu/menu-options-hover.wv
-  audio/osu_lazer_menu/menu-play-click.wv
-  audio/osu_lazer_menu/menu-play-hover.wv
-  audio/osu_lazer_menu/menuHit.wv
-  audio/osu_lazer_menu/menuback.wv
-  audio/osu_lazer_menu/menuclick.wv
-  audio/osu_lazer_menu/normal-hitclap.wv
-  audio/osu_lazer_menu/normal-hitfinish.wv
-  audio/osu_lazer_menu/normal-hitnormal.wv
-  audio/osu_lazer_menu/normal-hitwhistle.wv
-  audio/osu_lazer_menu/normal-sliderslide.wv
-  audio/osu_lazer_menu/normal-slidertick.wv
-  audio/osu_lazer_menu/normal-sliderwhistle.wv
-  audio/osu_lazer_menu/pause-back-click.wv
-  audio/osu_lazer_menu/pause-continue-click.wv
-  audio/osu_lazer_menu/pause-hover.wv
-  audio/osu_lazer_menu/pause-retry-click.wv
-  audio/osu_lazer_menu/restart.wv
-  audio/osu_lazer_menu/sliderbar.wv
-  audio/osu_lazer_menu/soft-hitclap.wv
-  audio/osu_lazer_menu/soft-hitfinish.wv
-  audio/osu_lazer_menu/soft-hitnormal.wv
-  audio/osu_lazer_menu/soft-hitwhistle.wv
-  audio/osu_lazer_menu/soft-sliderslide.wv
-  audio/osu_lazer_menu/soft-slidertick.wv
-  audio/osu_lazer_menu/soft-sliderwhistle.wv
-  audio/osu_lazer_menu/spinnerbonus.wv
-  audio/osu_lazer_menu/spinnerspin.wv
-  audio/osu_lazer_menu/taiko-normal-hitclap.wv
-  audio/osu_lazer_menu/taiko-normal-hitfinish.wv
-  audio/osu_lazer_menu/taiko-normal-hitnormal.wv
-  audio/osu_lazer_menu/taiko-normal-hitwhistle.wv
-  audio/osu_lazer_menu/taiko-soft-hitclap.wv
-  audio/osu_lazer_menu/taiko-soft-hitfinish.wv
-  audio/osu_lazer_menu/taiko-soft-hitnormal.wv
-  audio/osu_lazer_menu/taiko-soft-hitwhistle.wv
   audio/sfx_ctf_cap_pl.wv
   audio/sfx_ctf_drop.wv
   audio/sfx_ctf_grab_en.wv
@@ -2757,7 +2684,6 @@ if(CLIENT)
   set_src(GAME_CLIENT GLOB_RECURSE src/game/client
     animstate.cpp
     animstate.h
-    bc_ui_animations.h
     component.cpp
     component.h
     components/background.cpp
@@ -2789,12 +2715,10 @@ if(CLIENT)
     components/bestclient/magic_particles.h
     components/bestclient/hud_editor.cpp
     components/bestclient/hud_editor.h
-    components/bestclient/menus_bestclient.cpp
     components/bestclient/music_player.cpp
     components/bestclient/music_player.h
     components/bestclient/orbit_aura.cpp
     components/bestclient/orbit_aura.h
-    components/bestclient/version.h
     components/bestclient/r_jelly.cpp
     components/bestclient/r_jelly.h
     components/bestclient/voice/protocol.h
@@ -2940,7 +2864,6 @@ if(CLIENT)
     components/tclient/tclient.h
     components/tclient/trails.cpp
     components/tclient/trails.h
-    components/bestclient/voice/server.cpp
     components/tclient/warlist.cpp
     components/tclient/warlist.h
     components/tooltips.cpp
