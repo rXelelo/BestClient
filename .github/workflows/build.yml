@@ -351,6 +351,11 @@ jobs:
         TW_KEY_NAME: /home/runner/DDNet.jks
         TW_KEY_ALIAS: DDNet-Key
       run: |
+        # Create dummy FFmpeg headers to satisfy unconditional includes in source files
+        # since VIDEORECORDER is OFF for Android but headers are still requested.
+        mkdir -p src/libavcodec src/libavformat src/libavutil src/libswscale src/libswresample
+        touch src/libavcodec/avcodec.h src/libavformat/avformat.h src/libavutil/avutil.h \
+              src/libswscale/swscale.h src/libswresample/swresample.h
         export TW_KEY_PW="$(openssl rand -base64 32)"
         keytool -genkey -v -keystore "$TW_KEY_NAME" -keyalg RSA -keysize 2048 -validity 10000 -alias "$TW_KEY_ALIAS" -storepass "$TW_KEY_PW" -dname "CN=DDNet CI, OU=DDNet, O=DDNet"
         export ANDROID_HOME="/home/runner/Android/Sdk"
